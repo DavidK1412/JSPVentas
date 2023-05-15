@@ -17,14 +17,16 @@ public class Connector {
     private Connector() {
         JSONParser parser = new JSONParser();
         try{
-            String credentialsPath = System.getProperty("user.dir") + "/src/utils/credentials.json";
+            String credentialsPath = "C:\\Users\\DAVID\\OneDrive\\Escritorio\\JSPVentas\\src\\java\\utils\\credentials.json";
             JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(credentialsPath));
             String host = (String)jsonObject.get("db_ip");
-            String port = (String)jsonObject.get("dp_port");
+            String port = (String)jsonObject.get("db_port");
             String username = (String)jsonObject.get("db_user");
-            String password = (String)jsonObject.get("db_pssword");
+            String password = (String)jsonObject.get("db_password");
             String name = (String)jsonObject.get("db_name");
             String dbURL = "jdbc:mysql://"+host+":"+port+"/" + name;
+            System.out.println("dbURL = " + dbURL);
+            System.out.println("username + password = " + username + password);
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnn = DriverManager.getConnection(dbURL, username, password);
         } catch( SQLException | FileNotFoundException ex ) {

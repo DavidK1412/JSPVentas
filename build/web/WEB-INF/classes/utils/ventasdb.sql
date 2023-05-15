@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2023 a las 03:35:17
+-- Tiempo de generación: 13-05-2023 a las 04:50:16
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -73,7 +73,8 @@ CREATE TABLE `empleado` (
   `Nombres` varchar(50) DEFAULT NULL,
   `Apellidos` varchar(50) DEFAULT NULL,
   `Telefono` varchar(50) DEFAULT NULL,
-  `Estado` int(1) DEFAULT 1
+  `Estado` int(1) DEFAULT 1,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
