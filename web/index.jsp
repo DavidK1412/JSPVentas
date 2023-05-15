@@ -35,6 +35,7 @@
                             <button name="login" value="Ingresar" type="submit" class="btn btn-primary" style="margin-top: 2rem">Ingresar</button>
                         </form>
                           <!--Hola-->
+				  <!--Hola 2-->
                     </div>
                 </div>
             </div>
