@@ -33,8 +33,12 @@
                             </div>
 
                             <button name="login" value="Ingresar" type="submit" class="btn btn-primary" style="margin-top: 2rem">Ingresar</button>
+                            <c:if test="${requestScope.notFounded}">
+                                <label style='color: red;'><c:out value=" Error, usuario o contraseña incorrectos"/></label>
+                            </c:if>
                         </form>
                           <!--Hola-->
+				  <!--Hola 2-->
                     </div>
                 </div>
             </div>

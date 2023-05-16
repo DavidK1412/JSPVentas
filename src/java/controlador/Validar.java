@@ -74,9 +74,10 @@ public class Validar extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("Controlador?accion=Principal");
                 rd.forward(request, response);
             }else{
+                request.setAttribute("notFounded", true);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        } else{
+        }else{
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
