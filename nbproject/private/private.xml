@@ -3,20 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/web/Cliente.jsp</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/interfaces/IDao.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/utils/Connector.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/modelo/dto/ClienteDTO.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/web/Empleado.jsp</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/controlador/Validar.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/modelo/dao/EmpleadoDAO.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/modelo/dto/EmpleadoDTO.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/modelo/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/controlador/Controlador.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/src/java/utils/Security.java</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/web/index.jsp</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/web/principal.jsp</file>
-            <file>file:/C:/Users/DAVID/OneDrive/Escritorio/JSPVentas/web/Producto.jsp</file>
+            <file>file:/C:/Users/felip/OneDrive/Escritorio/proyecto/JSPVentas/src/java/controlador/Controlador.java</file>
         </group>
     </open-files>
 </project-private>
