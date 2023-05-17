@@ -25,16 +25,16 @@
                             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?accion=Empleados" target="principalFrame">Empleados</a>
+                            <a class="nav-link" href="Controlador?menu=Empleados&accion=Listar" target="principalFrame">Empleados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?accion=Productos" target="principalFrame">Productos</a>
+                            <a class="nav-link" href="Controlador?menu=Productos" target="principalFrame">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?accion=Clientes" target="principalFrame">Clientes</a>
+                            <a class="nav-link" href="Controlador?menu=Clientes" target="principalFrame">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?accion=Ventas" target="principalFrame">Nueva venta</a>
+                            <a class="nav-link" href="Controlador?menu=Ventas" target="principalFrame">Nueva venta</a>
                         </li>
                     </ul>
                     <div class="dropdown">

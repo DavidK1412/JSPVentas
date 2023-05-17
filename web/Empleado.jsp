@@ -16,7 +16,7 @@
         <div class="d-flex">
             <div class="card col-sm-6">
             <div class="card-body">
-                <form>
+                <form action="Controlador?menu=Empleados" method="POST">
                     <div class="form-group">
                         <label> Usuario </label>
                         <input type="text" name="txtUsuario" class="form-control">
@@ -41,7 +41,7 @@
                         <label> Estado </label>
                         <input type="text" name="txtEstado" class="form-control">
                     </div>
-                    <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                    <input type="submit" name="accion" value="Crear" class="btn btn-info">
                 </form>
             </div>
         </div>
@@ -57,6 +57,21 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <c:forEach var="empleado" items="${empleados}">
+                        <tr>
+                            <td>${empleado.getUsuario()}</td>
+                            <td>${empleado.getNombres()}</td>
+                            <td>${empleado.getApellidos()}</td>
+                            <td>${empleado.getTelefono()}</td>
+                            <td>${empleado.getEstado()}</td>
+                            <td>
+                                <a>Editar</a>
+                                <a>Eliminar</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
             </table>
         </div>
         </div>

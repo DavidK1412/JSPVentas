@@ -71,7 +71,7 @@ public class Validar extends HttpServlet {
                 System.out.println(data.toString());
                 //.forward(request, response);
                 request.setAttribute("user", data);
-                RequestDispatcher rd = request.getRequestDispatcher("Controlador?accion=Principal");
+                RequestDispatcher rd = request.getRequestDispatcher("Controlador?menu=Principal");
                 rd.forward(request, response);
             }else{
                 request.setAttribute("notFounded", true);

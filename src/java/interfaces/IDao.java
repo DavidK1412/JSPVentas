@@ -7,9 +7,9 @@ package interfaces;
 import java.util.ArrayList;
 
 public interface IDao <T> {
-    public T search(String id);
+    public T search(T obj);
     public ArrayList<T> listAll();
     public boolean delete(T obj);
-    public boolean update(T obj, String id);
+    public boolean update(T obj);
     public boolean create(T obj);
 }
