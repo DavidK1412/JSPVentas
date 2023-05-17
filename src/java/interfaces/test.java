@@ -11,6 +11,12 @@ package interfaces;
 public class test {
     private void holi(){
         System.out.println("saddassd");
+        System.out.println("Hola mundo");
+        System.out.println("Hola mundo");
+        System.out.println("Hola mundo");
+        System.out.println("Hola mundo");
+        System.out.println("Hola mundo");
+        
     }
     
 }
