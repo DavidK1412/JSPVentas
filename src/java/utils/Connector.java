@@ -17,7 +17,7 @@ public class Connector {
     private Connector() {
         JSONParser parser = new JSONParser();
         try{
-            String credentialsPath = "asdsa";
+            String credentialsPath = "C:\\Users\\felip\\OneDrive\\Escritorio\\proyecto\\JSPVentas\\src\\java\\utils\\credentials.json";
             JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(credentialsPath));
             String host = (String)jsonObject.get("db_ip");
             String port = (String)jsonObject.get("db_port");
