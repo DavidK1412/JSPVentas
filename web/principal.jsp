@@ -66,7 +66,7 @@
             </div>
         </nav>
         <div style="height: 550px;">
-            <iframe name="principalFrame" style="height: 100%; width: 100%;"></iframe>
+            <iframe name="principalFrame" style="height: 100%; width: 100%; border: none;"></iframe>
         </div>
     </body>
 </html>
