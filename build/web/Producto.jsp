@@ -13,6 +13,58 @@
                 crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1>Productos</h1>
+        <div class="d-flex">
+            <div class="col-sm-5">
+                <div class="card">
+                    <form action="Controlador" method="POST">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Datos del producto</label>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>ID</label>
+                                <input type="text" name="txtIDproducto" class="form-control" placeholder="ID">
+                            </div>-->
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" name="txtNombre" class="form-control" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Precio</label>
+                                <input type="text" name="txtPrecio" class="form-control" placeholder="Precio">
+                            </div>
+                            <div class="form-group">
+                                <label>Stock</label>
+                                <input type="text" name="txtStock" class="form-control" placeholder="Stock">
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" name="txtEstado" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                        <input type="submit" name="accion" value="Crear" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
