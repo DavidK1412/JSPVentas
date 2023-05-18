@@ -18,20 +18,20 @@
             <div class="card-body">
                 <form action="Controlador?menu=Empleados" method="POST">
                     <div class="form-group">
-                        <label> Usuario </label>
-                        <input type="text" name="txtUsuario" class="form-control">
+                        <label> Usuario ${em.getUsuario()}</label>
+                        <input type="text" value="${em.getUsuario()}" name="txtUsuario" class="form-control">
                     </div>
                     <div class="form-group">
                         <label> Nombres </label>
-                        <input type="text" name="txtNombres" class="form-control">
+                        <input type="text" value="${em.getNombres()}" name="txtNombres" class="form-control">
                     </div>
                     <div class="form-group">
                         <label> Apellidos </label>
-                        <input type="text" name="txtApellidos" class="form-control">
+                        <input type="text" value="${em.getApellidos()}" name="txtApellidos" class="form-control">
                     </div>
                     <div class="form-group">
                         <label> Telefono </label>
-                        <input type="text" name="txtTelefono" class="form-control">
+                        <input type="text" value="${em.getTelefono()}" name="txtTelefono" class="form-control">
                     </div>
                     <div class="form-group">
                         <label> Contraseña </label>
@@ -39,9 +39,10 @@
                     </div>
                     <div class="form-group">
                         <label> Estado </label>
-                        <input type="text" name="txtEstado" class="form-control">
+                        <input type="text" name="txtEstado" value="${em.getEstado()}" class="form-control">
                     </div>
                     <input type="submit" name="accion" value="Crear" class="btn btn-info">
+                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                 </form>
             </div>
         </div>
@@ -66,8 +67,8 @@
                             <td>${empleado.getTelefono()}</td>
                             <td>${empleado.getEstado()}</td>
                             <td>
-                                <a>Editar</a>
-                                <a>Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&id=${empleado.getUsuario()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id=${empleado.getUsuario()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>

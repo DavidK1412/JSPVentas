@@ -39,6 +39,7 @@ public class Controlador extends HttpServlet {
         if(menu.equals("Empleados")){
             EmpleadoDTO eDto = new EmpleadoDTO();
             EmpleadoDAO eDao = new EmpleadoDAO();
+            String id;
             switch(action){
                 case "Listar":
                     ArrayList<EmpleadoDTO> lista = new ArrayList<EmpleadoDTO>();
@@ -61,9 +62,34 @@ public class Controlador extends HttpServlet {
                     eDao.create(eDto);
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
+                case "Editar":
+                    id = request.getParameter("id");
+                    eDto.setUsuario(id);
+                    eDto = eDao.search(eDto);
+                    System.out.println(eDto.toString());
+                    request.setAttribute("em", eDto);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
                 case "Actualizar":
+                    String usuario1 = request.getParameter("txtUsuario");
+                    String nombres1 = request.getParameter("txtNombres");
+                    String apellidos1 = request.getParameter("txtApellidos");
+                    String telefono1 = request.getParameter("txtTelefono");
+                    String pass1 = request.getParameter("txtPassword");
+                    int estado1 = Integer.parseInt(request.getParameter("txtEstado"));
+                    eDto.setUsuario(usuario1);
+                    eDto.setNombres(nombres1);
+                    eDto.setApellidos(apellidos1);
+                    eDto.setTelefono(telefono1);
+                    eDto.setPassword(pass1);
+                    eDto.setEstado(estado1);
+                    eDao.update(eDto);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
+                    id = request.getParameter("id");
+                    eDto.setUsuario(id);
+                    eDao.delete(eDto);
                     break;
             }
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);

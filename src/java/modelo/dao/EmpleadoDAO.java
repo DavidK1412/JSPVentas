@@ -22,6 +22,7 @@ public class EmpleadoDAO implements IDao<EmpleadoDTO> {
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
+             ps.setString(1, obj.getUsuario());
             rs = ps.executeQuery();
             while(rs.next()){
                 e.setUUID(rs.getString(1));

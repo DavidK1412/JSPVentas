@@ -7,7 +7,7 @@ import modelo.dto.ClienteDTO;
 public class ClienteDAO implements IDao<ClienteDTO>{
 
     @Override
-    public ClienteDTO search(String id) {
+    public ClienteDTO search(ClienteDTO obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -22,7 +22,7 @@ public class ClienteDAO implements IDao<ClienteDTO>{
     }
 
     @Override
-    public boolean update(ClienteDTO obj, String id) {
+    public boolean update(ClienteDTO obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
