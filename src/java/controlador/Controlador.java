@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.EmpleadoDAO;
 import modelo.dto.EmpleadoDTO;
 import modelo.dto.ProductoDTO;
+import modelo.dao.ProductoDAO;
 import modelo.dto.ClienteDTO;
 import modelo.dao.ClienteDAO;
 
@@ -99,6 +100,56 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
         }
         if(menu.equals("Productos")){
+            ProductoDTO pDto = new ProductoDTO();
+            ProductoDAO pDao = new ProductoDAO();
+            int idP;
+            switch(action){
+                case "Listar":
+                    ArrayList<ProductoDTO> lista = new ArrayList<ProductoDTO>();
+                    lista = pDao.listAll();
+                    request.setAttribute("productos", lista);
+                    break;
+                case "Crear":
+                    String nombre = request.getParameter("txtNombre");
+                    int cantidad = Integer.parseInt(request.getParameter("txtStock"));
+                    double precio = Double.parseDouble(request.getParameter("txtPrecio"));
+                    int estado = Integer.parseInt(request.getParameter("txtEstado"));
+                    pDto.setNombre(nombre);
+                    pDto.setStock(cantidad);
+                    pDto.setPrecio(precio);
+                    pDto.setEstado(estado);
+                    pDao.create(pDto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    idP = Integer.parseInt(request.getParameter("id"));
+                    pDto.setId(idP);
+                    pDto = pDao.search(pDto);
+                    System.out.println(pDto.toString());
+                    request.setAttribute("pr", pDto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    pDto.setId(Integer.parseInt(request.getParameter("txtIDproducto")));
+                    String nombre1 = request.getParameter("txtNombre");
+                    int cantidad1 = Integer.parseInt(request.getParameter("txtStock"));
+                    double precio1 = Double.parseDouble(request.getParameter("txtPrecio"));
+                    int estado1 = Integer.parseInt(request.getParameter("txtEstado"));
+                    pDto.setNombre(nombre1);
+                    pDto.setStock(cantidad1);
+                    pDto.setPrecio(precio1);
+                    pDto.setEstado(estado1);
+                    System.out.println(pDto.toString());
+                    pDao.update(pDto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    idP = Integer.parseInt(request.getParameter("id"));
+                    pDto.setId(idP);
+                    pDao.delete(pDto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=Listar").forward(request, response);
+                    break;
+            }
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
         if(menu.equals("Clientes")){

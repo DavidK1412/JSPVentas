@@ -16,7 +16,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
 
     @Override
     public ProductoDTO search(ProductoDTO obj) {
-        String SQL = "SELECT * FROM producto WHERE id=?";
+        String SQL = "SELECT * FROM producto WHERE ID=?";
         ProductoDTO p = new ProductoDTO();
         try{
             conn = Connector.getInstance();
@@ -25,10 +25,10 @@ public class ProductoDAO implements IDao<ProductoDTO>{
             rs = ps.executeQuery();
             while(rs.next()){
                 p.setId(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setPrecio(rs.getDouble(3));
-                p.setStock(rs.getInt(4));
-                p.setEstado(rs.getInt(5));
+                p.setNombre(rs.getString(3));
+                p.setPrecio(rs.getDouble(4));
+                p.setStock(rs.getInt(5));
+                p.setEstado(rs.getInt(6));
             }
         }catch(Exception err){
             System.out.println("Operacion no finalizada: " + err.getMessage());
@@ -49,10 +49,10 @@ public class ProductoDAO implements IDao<ProductoDTO>{
             while(rs.next()){
                 ProductoDTO p = new ProductoDTO();
                 p.setId(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setPrecio(rs.getDouble(3));
-                p.setStock(rs.getInt(4));
-                p.setEstado(rs.getInt(5));
+                p.setNombre(rs.getString(3));
+                p.setPrecio(rs.getDouble(4));
+                p.setStock(rs.getInt(5));
+                p.setEstado(rs.getInt(6));
                 lista.add(p);
             }
         }catch(Exception err){
@@ -65,7 +65,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
 
     @Override
     public boolean delete(ProductoDTO obj) {
-        String SQL = "DELETE FROM producto WHERE id=?";
+        String SQL = "DELETE FROM producto WHERE ID=?";
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
@@ -82,7 +82,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
 
     @Override
     public boolean update(ProductoDTO obj) {
-        String SQL = "UPDATE producto SET nombre=?, precio=?, stock=?, estado=? WHERE id=?";
+        String SQL = "UPDATE producto SET Nombre=?, Precio=?, Stock=?, Estado=? WHERE ID=?";
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
@@ -103,7 +103,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
 
     @Override
     public boolean create(ProductoDTO obj) {
-        String SQL = "INSERT INTO producto(nombre, precio, stock, estado) VALUES(?,?,?,?)";
+        String SQL = "INSERT INTO producto(Nombre, Precio, Stock, Estado) VALUES(?,?,?,?)";
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);

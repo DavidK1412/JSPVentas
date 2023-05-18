@@ -16,31 +16,31 @@
         <div class="d-flex">
             <div class="col-sm-5">
                 <div class="card">
-                    <form action="Controlador" method="POST">
+                    <form action="Controlador?menu=Productos" method="POST">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Datos del producto</label>
                             </div>
                             <br>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label>ID</label>
-                                <input type="text" name="txtIDproducto" class="form-control" placeholder="ID">
-                            </div>-->
+                                <input type="text" value="${pr.getId()}" name="txtIDproducto" class="form-control" >
+                            </div>
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" name="txtNombre" class="form-control">
+                                <input type="text" value="${pr.getNombre()}" name="txtNombre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Precio</label>
-                                <input type="text" name="txtPrecio" class="form-control">
+                                <input type="text" value="${pr.getPrecio()}" name="txtPrecio" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Stock</label>
-                                <input type="text" name="txtStock" class="form-control">
+                                <input type="text" value="${pr.getStock()}" name="txtStock" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
-                                <input type="text" name="txtEstado" class="form-control">
+                                <input type="text" value="${pr.getEstado()}" name="txtEstado" class="form-control">
                             </div>
                         </div>
                         <input type="submit" name="accion" value="Crear" class="btn btn-info">
@@ -62,6 +62,21 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <c:forEach var="producto" items="${productos}">
+                                    <tr>
+                                        <td>${producto.getId()}</td>
+                                        <td>${producto.getNombre()}</td>
+                                        <td>$ ${producto.getPrecio()}</td>
+                                        <td>${producto.getStock()}</td>
+                                        <td>${producto.getEstado()}</td>
+                                        <td>
+                                            <a href="Controlador?menu=Productos&accion=Editar&id=${producto.getId()}" class="btn btn-warning">Editar</a>
+                                            <a href="Controlador?menu=Productos&accion=Eliminar&id=${producto.getId()}" class="btn btn-danger">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
