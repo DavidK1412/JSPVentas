@@ -21,29 +21,30 @@
                             <div class="form-group">
                                 <label>Datos del producto</label>
                             </div>
+                            <br>
                             <!-- <div class="form-group">
                                 <label>ID</label>
                                 <input type="text" name="txtIDproducto" class="form-control" placeholder="ID">
                             </div>-->
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" name="txtNombre" class="form-control" placeholder="Nombre">
+                                <input type="text" name="txtNombre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Precio</label>
-                                <input type="text" name="txtPrecio" class="form-control" placeholder="Precio">
+                                <input type="text" name="txtPrecio" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Stock</label>
-                                <input type="text" name="txtStock" class="form-control" placeholder="Stock">
+                                <input type="text" name="txtStock" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
-                                <input type="text" name="txtEstado" class="form-control" placeholder="Estado">
+                                <input type="text" name="txtEstado" class="form-control">
                             </div>
                         </div>
                         <input type="submit" name="accion" value="Crear" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-warning">
                     </form>
                 </div>
             </div>

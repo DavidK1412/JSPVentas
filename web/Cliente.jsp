@@ -13,6 +13,59 @@
                 crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1>Clientes</h1>
+        <div class="d-flex">
+            <div class="col-sm-5">
+                <div class="card">
+                    <form action="Controlador" method="POST">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Datos del Cliente</label>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Identificacion</label>
+                                <input type="text" name="txtIdentificacion" class="form-control" placeholder="Identificacion">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombres</label>
+                                <input type="text" name="txtNombres" class="form-control" placeholder="Nombres">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                <input type="text" name="txtApellidos" class="form-control" placeholder="Apellidos">
+                            </div>
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input type="text" name="txtDireccion" class="form-control" placeholder="Direccion">
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" name="txtEstado" class="form-control" placeholder="Estado">
+                            </div>
+                        </div>
+                        <input type="submit" name="accion" value="Crear" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-warning">
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Identificacion</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Direccion</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
