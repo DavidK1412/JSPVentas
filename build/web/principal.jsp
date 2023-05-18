@@ -28,11 +28,11 @@
                             <a class="nav-link" href="Controlador?menu=Empleados&accion=Listar" target="principalFrame">Empleados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?menu=Productos" target="principalFrame">Productos</a>
+                            <a class="nav-link" href="Controlador?menu=Productos&accion=Listar" target="principalFrame">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Controlador?menu=Clientes" target="principalFrame">Clientes</a>
-                        </li>
+                            <a class="nav-link" href="Controlador?menu=Clientes&accion=Listar" target="principalFrame">Clientes</a>
+                        </li> <!--as-->
                         <li class="nav-item">
                             <a class="nav-link" href="Controlador?menu=Ventas" target="principalFrame">Nueva venta</a>
                         </li>

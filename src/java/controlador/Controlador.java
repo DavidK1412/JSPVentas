@@ -13,6 +13,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.dao.EmpleadoDAO;
 import modelo.dto.EmpleadoDTO;
+import modelo.dto.ProductoDTO;
+import modelo.dto.ClienteDTO;
+import modelo.dao.ClienteDAO;
 
 /**
  *
@@ -90,6 +93,7 @@ public class Controlador extends HttpServlet {
                     id = request.getParameter("id");
                     eDto.setUsuario(id);
                     eDao.delete(eDto);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
@@ -98,6 +102,58 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
         if(menu.equals("Clientes")){
+            ClienteDTO cDto = new ClienteDTO();
+            ClienteDAO cDao = new ClienteDAO();
+            String id;
+            switch(action){
+                case "Listar":
+                    ArrayList<ClienteDTO> lista = new ArrayList<ClienteDTO>();
+                    lista = cDao.listAll();
+                    request.setAttribute("clientes", lista);
+                    break;
+                case "Crear":
+                    String identificacion = request.getParameter("txtIdentificacion");
+                    String nombres = request.getParameter("txtNombres");
+                    String apellidos = request.getParameter("txtApellidos");
+                    String direccion = request.getParameter("txtDireccion");
+                    int estado = Integer.parseInt(request.getParameter("txtEstado"));
+                    cDto.setIdentificacion(identificacion);
+                    cDto.setNombres(nombres);
+                    cDto.setApellidos(apellidos);
+                    cDto.setDireccion(direccion);
+                    cDto.setEstado(estado);
+                    cDao.create(cDto);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    id = request.getParameter("id");
+                    cDto.setIdentificacion(id);
+                    cDto = cDao.search(cDto);
+                    System.out.println(cDto.toString());
+                    request.setAttribute("cl", cDto);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    String identificacion1 = request.getParameter("txtIdentificacion");
+                    String nombres1 = request.getParameter("txtNombres");
+                    String apellidos1 = request.getParameter("txtApellidos");
+                    String direccion1 = request.getParameter("txtDireccion");
+                    int estado1 = Integer.parseInt(request.getParameter("txtEstado"));
+                    cDto.setIdentificacion(identificacion1);
+                    cDto.setNombres(nombres1);
+                    cDto.setApellidos(apellidos1);
+                    cDto.setDireccion(direccion1);
+                    cDto.setEstado(estado1);
+                    cDao.update(cDto);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    id = request.getParameter("id");
+                    cDto.setIdentificacion(id);
+                    cDao.delete(cDto);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=Listar").forward(request, response);
+                    break;
+            }
             request.getRequestDispatcher("Cliente.jsp").forward(request, response);
         }
         if(menu.equals("Ventas")){

@@ -19,8 +19,8 @@ public class Connector {
         try{
 
             //String credentialsPath = "C:\\Users\\felip\\OneDrive\\Escritorio\\proyecto\\JSPVentas\\src\\java\\utils\\credentials.json";
-            String credentialsPath = "C:\\Users\\USUARIO\\OneDrive-Universidad Distrital Francisco José de Caldas\\Documentos\\JSPVentas\\src\\java\\utils\\credentials.json";
-            //String credentialsPath = "C:\\Users\\DAVID\\OneDrive\\Escritorio\\JSPVentas\\src\\java\\utils\\credentials.json";
+            //String credentialsPath = "C:\\Users\\USUARIO\\OneDrive-Universidad Distrital Francisco José de Caldas\\Documentos\\JSPVentas\\src\\java\\utils\\credentials.json";
+            String credentialsPath = "C:\\Users\\DAVID\\OneDrive\\Escritorio\\JSPVentas\\src\\java\\utils\\credentials.json";
             JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(credentialsPath));
             String host = (String)jsonObject.get("db_ip");
             String port = (String)jsonObject.get("db_port");
