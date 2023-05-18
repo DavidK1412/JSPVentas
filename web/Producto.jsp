@@ -24,7 +24,7 @@
                             <br>
                             <div class="form-group">
                                 <label>ID</label>
-                                <input type="text" value="${pr.getId()}" name="txtIDproducto" class="form-control" >
+                                <input type="text" value="${pr.getId()}" name="txtIDproducto" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Nombre</label>
