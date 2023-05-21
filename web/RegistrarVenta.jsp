@@ -99,9 +99,9 @@
                                         <td>${list.getPrecioProducto()}</td>
                                         <td>${list.getCantidad()}</td>
                                         <td>${list.getSubtotal()}</td>
-                                        <td>
+                                        <td class="d-flex">
                                             <a href="#" class="btn btn-warning">Editar</a>
-                                            <a href="#" class="btn btn-info">Eliminar</a>
+                                            <a href="#" class="btn btn-info" style="margin-left: 10px">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
