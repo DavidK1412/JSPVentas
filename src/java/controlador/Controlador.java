@@ -11,12 +11,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 import modelo.dao.EmpleadoDAO;
 import modelo.dto.EmpleadoDTO;
 import modelo.dto.ProductoDTO;
 import modelo.dao.ProductoDAO;
 import modelo.dto.ClienteDTO;
 import modelo.dao.ClienteDAO;
+import modelo.dto.VentaDTO;
 
 /**
  *
@@ -207,7 +209,45 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Cliente.jsp").forward(request, response);
         }
-        if(menu.equals("Ventas")){
+        if(menu.equals("NuevaVenta")){   
+            ClienteDAO cDao = new ClienteDAO();
+            ClienteDTO cDto = new ClienteDTO();
+            ProductoDTO pDto = new ProductoDTO();
+            ProductoDAO pDao = new ProductoDAO();
+            VentaDTO vDTO = new VentaDTO();
+            List<VentaDTO> lista = new ArrayList<>();
+            
+            switch (action) {
+                case "BuscarCliente":
+                    String id = request.getParameter("codigocliente");
+                    cDto.setIdentificacion(id);
+                    cDao.search(cDto);
+                    request.setAttribute("cDto", cDto);
+                    break;
+                case "BuscarProducto":
+                    int idP = Integer.parseInt(request.getParameter("codigoproducto"));
+                    pDto.setId(idP);
+                    pDao.search(pDto);
+                    request.setAttribute("pDto", pDto);
+                    break;
+                case "Agregar":
+                    //Declaracion de variables
+                    int item = 0;
+                    
+                    //Datos que iran en las variables
+                    item += 1;
+                    vDTO.setItem(item);
+                    vDTO.setID(pDto.getId());
+                    vDTO.setNombreProducto(request.getParameter("nomproducto"));
+                    vDTO.setPrecioProducto(Double.parseDouble(request.getParameter("precio")));
+                    vDTO.setCantidad(Integer.parseInt(request.getParameter("cant")));
+                    vDTO.setSubtotal(vDTO.getPrecioProducto()*vDTO.getCantidad());//Para hallar el subtotal
+                    lista.add(vDTO);
+                    request.setAttribute("lista", lista);
+                    
+                default:
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+            }
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
     }

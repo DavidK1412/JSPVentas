@@ -16,18 +16,22 @@
         <div class="d-flex">
             <div class="col-sm-4">
                 <div class="card">
-                    <form action="Controlador" method="POST">
+                    <form action="Controlador?menu=NuevaVenta" method="POST">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Datos del Cliente</label>
                             </div>
                             <div class="form-group d-flex">
-                                <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigocliente" class="form-control" placeholder="Identificacion">
-                                    <input type="submit" name="accion" value="Buscar" class="btn btn-info">
+                                <div class="col-sm-10 d-flex">
+                                    <input type="text" name="codigocliente" value="${cDto.getIdentificacion()}" class="form-control" placeholder="Identificacion">
+                                    <input type="submit" name="accion" value="BuscarCliente" class="btn btn-info">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente" class="form-control col-sm-6" placeholder="Datos Cliente">
+                            </div>
+                            <br>
+                            <div class="form-group d-flex">
+                                <div class="col-sm-6 d-flex">
+                                    <input type="text" name="nombrescliente" value="${cDto.getNombres()}" class="form-control col-sm-6" placeholder="Nombre">
+                                    <input type="text" name="apellidoscliente" value="${cDto.getApellidos()}" class="form-control col-sm-6" placeholder="Apellido">
                                 </div>
                             </div>
                             <br>
@@ -35,24 +39,27 @@
                                 <label>Datos del Producto</label>
                             </div>
                             <div class="form-group d-flex">
-                                <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigoproducto" class="form-control" placeholder="ID Producto">
-                                    <input type="submit" name="accion" value="Buscar" class="btn btn-info">
+                                <div class="col-sm-12 d-flex">
+                                    <input type="text" name="codigoproducto" value="${pDto.getId()}" class="form-control" placeholder="ID Producto">
+                                    <input type="submit" name="accion" value="BuscarProducto" class="btn btn-info">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente" class="form-control col-sm-6" placeholder="Datos Producto">
+                            </div>
+                            <br>
+                            <div class="form-group d-flex">
+                                <div class="col-sm-12">
+                                    <input type="text" name="nomproducto" value="${pDto.getNombre()}" class="form-control col-sm-6" placeholder="Nombre Producto">
                                 </div>
                             </div>
                             <br>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="precio" class="form-control" placeholder="$ 0">
+                                    <input type="text" name="precio" value="${pDto.getPrecio()}" class="form-control" placeholder="$0">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="number" name="cant" value="Buscar" class="form-control" placeholder="">
+                                    <input type="number" name="cant" value="1" class="form-control" placeholder="">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" name="stock" class="form-control" placeholder="Stock">
+                                    <input type="text" name="stock" value="${pDto.getStock()}" class="form-control" placeholder="Stock">
                                 </div>
                             </div>
                             <br>
@@ -63,7 +70,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex col-sm-6 ml-auto">

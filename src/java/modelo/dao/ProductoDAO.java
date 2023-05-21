@@ -120,5 +120,5 @@ public class ProductoDAO implements IDao<ProductoDTO>{
             conn.closeConnection();
         }
     }
-    
+
 }
