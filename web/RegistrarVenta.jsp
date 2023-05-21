@@ -90,14 +90,32 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <c:forEach var = "list" items="${lista}">
+                                    <tr>
+                                        <td>${list.getItem()}</td>
+                                        <td>${list.getIDProducto()}</td>
+                                        <td>${list.getNombreProducto()}</td>
+                                        <td>${list.getPrecioProducto()}</td>
+                                        <td>${list.getCantidad()}</td>
+                                        <td>${list.getSubtotal()}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-warning">Editar</a>
+                                            <a href="#" class="btn btn-info">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
                         </table>
                     </div>
-                    <div class="card-footer">
-                        <div>
+                    <div class="card-footer d-flex">
+                        <div class="col-sm-6">
                             <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>
-                        
+                        <div class="col-sm-3 ml-auto">
+                            <input type="text" name="txtTotal" class="form-control" value="${totalPagar}">
+                        </div>
                     </div>
                 </div>
             </div>

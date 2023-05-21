@@ -216,6 +216,7 @@ public class Controlador extends HttpServlet {
             ProductoDAO pDao = new ProductoDAO();
             VentaDTO vDTO = new VentaDTO();
             List<VentaDTO> lista = new ArrayList<>();
+            double totalPagar;
             
             switch (action) {
                 case "BuscarCliente":
@@ -229,10 +230,13 @@ public class Controlador extends HttpServlet {
                     pDto.setId(idP);
                     pDao.search(pDto);
                     request.setAttribute("pDto", pDto);
+                    request.setAttribute("lista", lista);
                     break;
                 case "Agregar":
                     //Declaracion de variables
                     int item = 0;
+                    vDTO = new VentaDTO();
+                    totalPagar = 0.0;
                     
                     //Datos que iran en las variables
                     item += 1;
@@ -243,6 +247,12 @@ public class Controlador extends HttpServlet {
                     vDTO.setCantidad(Integer.parseInt(request.getParameter("cant")));
                     vDTO.setSubtotal(vDTO.getPrecioProducto()*vDTO.getCantidad());//Para hallar el subtotal
                     lista.add(vDTO);
+                    
+                    for (int i = 0; i < lista.size(); i++) {
+                        totalPagar += lista.get(i).getSubtotal();
+                    }
+                    
+                    request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
                     
                 default:
