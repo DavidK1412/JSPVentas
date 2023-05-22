@@ -113,6 +113,7 @@ CREATE TABLE `venta` (
   `UUID` varchar(36) NOT NULL DEFAULT uuid(),
   `Cliente` varchar(36) NOT NULL,
   `Empleado` varchar(36) NOT NULL,
+  `NumeroSerie` varchar(244) DEFAULT NULL,
   `Fecha` date DEFAULT NULL,
   `Total` double DEFAULT NULL,
   `Estado` int(1) DEFAULT 1
