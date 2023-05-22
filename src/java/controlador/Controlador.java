@@ -217,10 +217,12 @@ public class Controlador extends HttpServlet {
             ProductoDTO pDto = new ProductoDTO();
             ProductoDAO pDao = new ProductoDAO();
             VentaDTO vDTO = new VentaDTO();
+            EmpleadoDTO eDto = new EmpleadoDTO();
+            EmpleadoDAO eDao = new EmpleadoDAO();
             List<VentaDTO> lista = new ArrayList<>();
             double totalPagar = 0.0;
             VentaDAO vDAO = new VentaDAO();
-            String numeroSerie;
+            String numeroSerie = "";
             
             switch (action) {
                 case "BuscarCliente":
@@ -248,7 +250,7 @@ public class Controlador extends HttpServlet {
                     //Datos que iran en las variables
                     item += 1;
                     vDTO.setItem(item);
-                    vDTO.setID(pDto.getId());
+                    vDTO.setIDProducto(pDto.getId());
                     vDTO.setNombreProducto(request.getParameter("nomproducto"));
                     vDTO.setPrecioProducto(Double.parseDouble(request.getParameter("precio")));
                     vDTO.setCantidad(Integer.parseInt(request.getParameter("cant")));
@@ -263,6 +265,26 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                 case "GenerarVenta":
                     
+                    //Guardar venta
+                    vDTO.setIDCliente(cDto.getIdentificacion());
+                    //vDTO.setIDEmpleado(eDto.getUsuario());
+                    //vDTO.setIDEmpleado(1); PENDIENTE
+                    vDTO.setNumSerie(numeroSerie);
+                    //vDTO.setFecha("2023-05-21"); PENDIENTE
+                    vDTO.setMonto(totalPagar);
+                    vDTO.setEstado(1);
+                    vDAO.create(vDTO);
+                    
+                    //Guardar detalle venta
+                    int idv = Integer.parseInt(vDAO.IDVentas());
+                    for (int i = 0; i < lista.size(); i++) {
+                        vDTO = new VentaDTO();
+                        vDTO.setID(idv);
+                        vDTO.setIDProducto(lista.get(i).getIDProducto());
+                        vDTO.setCantidad(lista.get(i).getCantidad());
+                        vDTO.setPrecioProducto(lista.get(i).getPrecioProducto());
+                        vDAO.guardarDetalleVentas(vDTO);
+                    }
                 default:
                     numeroSerie = vDAO.GenerarSerie();
                     if(numeroSerie == null){
