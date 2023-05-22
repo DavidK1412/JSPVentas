@@ -25,6 +25,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
             rs = ps.executeQuery();
             while(rs.next()){
                 p.setId(rs.getInt(1));
+                p.setUUID(rs.getString(2));
                 p.setNombre(rs.getString(3));
                 p.setPrecio(rs.getDouble(4));
                 p.setStock(rs.getInt(5));
@@ -49,6 +50,7 @@ public class ProductoDAO implements IDao<ProductoDTO>{
             while(rs.next()){
                 ProductoDTO p = new ProductoDTO();
                 p.setId(rs.getInt(1));
+                p.setUUID(rs.getString(2));
                 p.setNombre(rs.getString(3));
                 p.setPrecio(rs.getDouble(4));
                 p.setStock(rs.getInt(5));

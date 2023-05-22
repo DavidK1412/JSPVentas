@@ -228,13 +228,13 @@ public class Controlador extends HttpServlet {
                 case "BuscarCliente":
                     String id = request.getParameter("codigocliente");
                     cDto.setIdentificacion(id);
-                    cDao.search(cDto);
+                    cDto = cDao.search(cDto);
                     request.setAttribute("cDto", cDto);
                     break;
                 case "BuscarProducto":
                     int idP = Integer.parseInt(request.getParameter("codigoproducto"));
                     pDto.setId(idP);
-                    pDao.search(pDto);
+                    pDto = pDao.search(pDto);
                     request.setAttribute("cDto", cDto);
                     request.setAttribute("pDto", pDto);
                     request.setAttribute("lista", lista);
@@ -301,7 +301,7 @@ public class Controlador extends HttpServlet {
                         numeroSerie = "00000001";
                         request.setAttribute("nserie", numeroSerie);
                     }else{
-                        int incrementar  = Integer.parseInt(numeroSerie);
+                        int incrementar  = Integer.parseInt("0");
                         GenerarSerie gs = new GenerarSerie();
                         numeroSerie = gs.NumeroSerie(incrementar);
                         request.setAttribute("nserie", numeroSerie);

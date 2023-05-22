@@ -4,21 +4,37 @@ import java.util.Objects;
 
 public class ProductoDTO {
 
-    int id;
-    String nombre;
-    double precio;
-    int stock;
-    int estado;
-
-    public ProductoDTO() {
+    private String UUID;
+    private int id;
+    private String nombre;
+    private double precio;
+    private int stock;
+    private int estado;
+    
+    public ProductoDTO(){
+        this.UUID = "";
+        this.id = 0;
+        this.nombre = "";
+        this.precio = 0;
+        this.stock = 0;
+        this.estado = 0;
     }
 
-    public ProductoDTO(int id, String nombre, double precio, int stock, int estado) {
+    public ProductoDTO(String UUID, int id, String nombre, double precio, int stock, int estado) {
+        this.UUID = UUID;
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
+    }
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
     }
 
     public int getId() {
@@ -60,18 +76,26 @@ public class ProductoDTO {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ProductoDTO{" + "UUID=" + UUID + ", id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + ", estado=" + estado + '}';
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.id;
-        hash = 79 * hash + Objects.hashCode(this.nombre);
-        hash = 79 * hash + Objects.hashCode(this.precio);
-        hash = 79 * hash + this.stock;
-        hash = 79 * hash + this.estado;
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.UUID);
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.nombre);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        hash = 17 * hash + this.stock;
+        hash = 17 * hash + this.estado;
         return hash;
     }
+
     
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -84,21 +108,24 @@ public class ProductoDTO {
             return false;
         }
         final ProductoDTO other = (ProductoDTO) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+            return false;
+        }
+        if (this.stock != other.stock) {
+            return false;
+        }
         if (this.estado != other.estado) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.UUID, other.UUID)) {
             return false;
         }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.precio, other.precio)) {
-            return false;
-        }
-        if (!Objects.equals(this.stock, other.stock)) {
-            return false;
-        }
-        return Objects.equals(this.estado, other.estado);
+        return Objects.equals(this.nombre, other.nombre);
     }
+
+    
+    
 }
