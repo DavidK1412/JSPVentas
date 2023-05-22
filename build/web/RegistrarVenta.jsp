@@ -11,10 +11,18 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+        <style>
+            @media print{
+                .parte01, .btn, .accion{
+                    display: none;
+                    
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="d-flex">
-            <div class="col-sm-4">
+            <div class="col-lg-5 parte01">
                 <div class="card">
                     <form action="Controlador?menu=NuevaVenta" method="POST">
                         <div class="card-body">
@@ -70,7 +78,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex col-sm-6 ml-auto">
@@ -87,7 +95,7 @@
                                     <th>Precio</th>
                                     <th>Cantidad</th>
                                     <th>SubTotal</th>
-                                    <th>Acciones</th>
+                                    <th class="accion">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,7 +118,7 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta">Generar Venta</a>
+                            <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Generar Venta</a>
                             <!-- <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">-->
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>

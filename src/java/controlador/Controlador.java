@@ -264,6 +264,16 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
                 case "GenerarVenta":
+                    //Actualizacion del stock
+                    for (int i = 0; i < lista.size(); i++) {
+                        //ProductoDTO pdto = new ProductoDTO();
+                        int cantidad = lista.get(i).getCantidad();
+                        int idProducto = lista.get(i).getIDProducto();
+                        //ProductoDAO pdao = new ProductoDAO();
+                        pDao.search(pDto);
+                        int stockActual = pDto.getStock() - cantidad;
+                        pDao.update(pDto);
+                    }
                     
                     //Guardar venta
                     vDTO.setIDCliente(cDto.getIdentificacion());
