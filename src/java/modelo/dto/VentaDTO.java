@@ -1,14 +1,16 @@
 package modelo.dto;
 
+import java.util.Date;
+
 public class VentaDTO {
     private int ID;
     private int item;
     private String IDCliente;
-    private String UUIDEmpleado;
+    private String IDEmpleado;
     private int IDProducto;
     private String numSerie;
     private String nombreProducto;
-    private String Fecha; //Recordar cambiar a dato de tipo Date o Calendar
+    private Date Fecha; //Recordar cambiar a dato de tipo Date o Calendar
     private double precioProducto;
     private int cantidad;
     private double subtotal;
@@ -18,11 +20,11 @@ public class VentaDTO {
     public VentaDTO() {
     }
 
-    public VentaDTO(int ID, int item, String IDCliente, String UUIDEmpleado, int IDProducto, String numSerie, String nombreProducto, String Fecha, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
+    public VentaDTO(int ID, int item, String IDCliente, String IDEmpleado, int IDProducto, String numSerie, String nombreProducto, Date Fecha, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
         this.ID = ID;
         this.item = item;
         this.IDCliente = IDCliente;
-        this.UUIDEmpleado = UUIDEmpleado;
+        this.IDEmpleado = IDEmpleado;
         this.IDProducto = IDProducto;
         this.numSerie = numSerie;
         this.nombreProducto = nombreProducto;
@@ -58,12 +60,12 @@ public class VentaDTO {
         this.IDCliente = IDCliente;
     }
 
-    public String getUUIDEmpleado() {
-        return UUIDEmpleado;
+    public String getIDEmpleado() {
+        return IDEmpleado;
     }
 
-    public void setUUIDEmpleado(String UUIDEmpleado) {
-        this.UUIDEmpleado = UUIDEmpleado;
+    public void setIDEmpleado(String IDEmpleado) {
+        this.IDEmpleado = IDEmpleado;
     }
 
     public int getIDProducto() {
@@ -90,11 +92,11 @@ public class VentaDTO {
         this.nombreProducto = nombreProducto;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return Fecha;
     }
 
-    public void setFecha(String Fecha) {
+    public void setFecha(Date Fecha) {
         this.Fecha = Fecha;
     }
 

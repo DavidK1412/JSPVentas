@@ -261,6 +261,8 @@ public class Controlador extends HttpServlet {
                     
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
+                case "GenerarVenta":
+                    
                 default:
                     numeroSerie = vDAO.GenerarSerie();
                     if(numeroSerie == null){
