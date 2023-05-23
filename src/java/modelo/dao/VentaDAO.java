@@ -30,7 +30,7 @@ public class VentaDAO {
     
     public String IDVentas(){
         String idventas = "";
-        String SQL = "SELECT max(UUID) FROM venta";
+        String SQL = "SELECT max(ID) FROM venta";
         try {
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);

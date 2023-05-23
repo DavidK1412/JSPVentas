@@ -268,15 +268,18 @@ public class Controlador extends HttpServlet {
                     for (int i = 0; i < lista.size(); i++) {
                         //ProductoDTO pdto = new ProductoDTO();
                         int cantidad = lista.get(i).getCantidad();
-                        int idProducto = lista.get(i).getIDProducto();
+                        pDto.setId(lista.get(i).getIDProducto());
+                        //int idProducto = lista.get(i).getIDProducto();
                         //ProductoDAO pdao = new ProductoDAO();
-                        pDao.search(pDto);
-                        int stockActual = pDto.getStock() - cantidad;
+                        pDto = pDao.search(pDto);
+                        pDto.setStock(pDto.getStock() - cantidad); 
                         pDao.update(pDto);
                     }
                     
                     //Guardar venta
-                    vDTO.setIDCliente(cDto.getIdentificacion());
+                    //vDTO.setIDCliente(cDto.getIdentificacion());
+                    vDTO.setIDCliente(cDto.getUUID());
+                    vDTO.setIDEmpleado(eDto.getUUID());
                     //vDTO.setIDEmpleado(eDto.getUsuario());
                     //vDTO.setIDEmpleado(1); PENDIENTE
                     vDTO.setNumSerie(numeroSerie);

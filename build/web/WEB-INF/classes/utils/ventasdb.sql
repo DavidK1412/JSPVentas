@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2023 a las 04:07:52
+-- Tiempo de generación: 23-05-2023 a las 04:43:25
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -77,6 +77,13 @@ CREATE TABLE `empleado` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`UUID`, `Usuario`, `Nombres`, `Apellidos`, `Telefono`, `Estado`, `password`) VALUES
+('74745017-f90f-11ed-9162-d85ed30d9217', 'empleado1', 'Karen Daniela', 'Garzon', '3142101075', 1, 'c91d34234d6f27b926da7563a3720247a88ac492dc44309e7943dbe768180dad106040f37ac9f8209e510706f5e04acb78cdf029abcbd302262fec0357c29306');
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +118,7 @@ INSERT INTO `producto` (`ID`, `UUID`, `Nombre`, `Precio`, `Stock`, `Estado`) VAL
 
 CREATE TABLE `venta` (
   `UUID` varchar(36) NOT NULL DEFAULT uuid(),
+  `ID` int(11) NOT NULL,
   `Cliente` varchar(36) NOT NULL,
   `Empleado` varchar(36) NOT NULL,
   `NumeroSerie` varchar(244) DEFAULT NULL,
@@ -156,6 +164,7 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`UUID`),
+  ADD UNIQUE KEY `ID` (`ID`),
   ADD KEY `Cliente` (`Cliente`),
   ADD KEY `Empleado` (`Empleado`);
 
@@ -174,6 +183,12 @@ ALTER TABLE `detalleventa`
 --
 ALTER TABLE `producto`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
