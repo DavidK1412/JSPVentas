@@ -3,10 +3,12 @@ package modelo.dto;
 import java.util.Date;
 
 public class VentaDTO {
+    private String UUID;
     private int ID;
     private int item;
     private String IDCliente;
     private String IDEmpleado;
+    private String UUIDProducto;
     private int IDProducto;
     private String numSerie;
     private String nombreProducto;
@@ -20,11 +22,12 @@ public class VentaDTO {
     public VentaDTO() {
     }
 
-    public VentaDTO(int ID, int item, String IDCliente, String IDEmpleado, int IDProducto, String numSerie, String nombreProducto, Date Fecha_def, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
+    public VentaDTO(String UUID, int ID, String IDCliente, String IDEmpleado, String UUIDProducto, int IDProducto, String numSerie, String nombreProducto, Date fechaActual, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
+        this.UUID = UUID;
         this.ID = ID;
-        this.item = item;
         this.IDCliente = IDCliente;
         this.IDEmpleado = IDEmpleado;
+        this.UUIDProducto = UUIDProducto;
         this.IDProducto = IDProducto;
         this.numSerie = numSerie;
         this.nombreProducto = nombreProducto;
@@ -35,6 +38,26 @@ public class VentaDTO {
         this.monto = monto;
         this.estado = estado;
     }
+
+    public String getUUIDProducto() {
+        return UUIDProducto;
+    }
+
+    public void setUUIDProducto(String UUIDProducto) {
+        this.UUIDProducto = UUIDProducto;
+    }
+
+    
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+    
+    
 
     public int getID() {
         return ID;

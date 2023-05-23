@@ -27,6 +27,19 @@ import utils.GenerarSerie;
  * @author DAVID
  */
 public class Controlador extends HttpServlet {
+    
+    VentaDTO vDTO = new VentaDTO();
+    EmpleadoDTO eDto = new EmpleadoDTO();
+    EmpleadoDAO eDao = new EmpleadoDAO();
+    List<VentaDTO> lista = new ArrayList<>();
+    double totalPagar = 0.0;
+    VentaDAO vDAO = new VentaDAO();
+    String numeroSerie = "";
+    ClienteDAO cDao = new ClienteDAO();
+    ClienteDTO cDto = new ClienteDTO();
+    ProductoDTO pDto = new ProductoDTO();
+    ProductoDAO pDao = new ProductoDAO();
+    int item = 0;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,8 +58,6 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("principal.jsp").forward(request, response);
         }
         if(menu.equals("Empleados")){
-            EmpleadoDTO eDto = new EmpleadoDTO();
-            EmpleadoDAO eDao = new EmpleadoDAO();
             String id;
             switch(action){
                 case "Listar":
@@ -104,8 +115,6 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
         }
         if(menu.equals("Productos")){
-            ProductoDTO pDto = new ProductoDTO();
-            ProductoDAO pDao = new ProductoDAO();
             int idP;
             switch(action){
                 case "Listar":
@@ -157,8 +166,6 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
         if(menu.equals("Clientes")){
-            ClienteDTO cDto = new ClienteDTO();
-            ClienteDAO cDao = new ClienteDAO();
             String id;
             switch(action){
                 case "Listar":
@@ -212,18 +219,6 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Cliente.jsp").forward(request, response);
         }
         if(menu.equals("NuevaVenta")){   
-            ClienteDAO cDao = new ClienteDAO();
-            ClienteDTO cDto = new ClienteDTO();
-            ProductoDTO pDto = new ProductoDTO();
-            ProductoDAO pDao = new ProductoDAO();
-            VentaDTO vDTO = new VentaDTO();
-            EmpleadoDTO eDto = new EmpleadoDTO();
-            EmpleadoDAO eDao = new EmpleadoDAO();
-            List<VentaDTO> lista = new ArrayList<>();
-            double totalPagar = 0.0;
-            VentaDAO vDAO = new VentaDAO();
-            String numeroSerie = "";
-            
             switch (action) {
                 case "BuscarCliente":
                     String id = request.getParameter("codigocliente");
@@ -243,17 +238,17 @@ public class Controlador extends HttpServlet {
                 case "Agregar":
                     request.setAttribute("cDto", cDto);
                     //Declaracion de variables
-                    int item = 0;
-                    vDTO = new VentaDTO();
                     totalPagar = 0.0;
-                    
+                    vDTO = new VentaDTO();
                     //Datos que iran en las variables
                     item += 1;
                     vDTO.setItem(item);
                     vDTO.setIDProducto(pDto.getId());
+                    vDTO.setUUIDProducto(pDto.getUUID());
                     vDTO.setNombreProducto(request.getParameter("nomproducto"));
                     vDTO.setPrecioProducto(Double.parseDouble(request.getParameter("precio")));
                     vDTO.setCantidad(Integer.parseInt(request.getParameter("cant")));
+                    System.out.println(vDTO.getCantidad());
                     vDTO.setSubtotal(vDTO.getPrecioProducto()*vDTO.getCantidad());//Para hallar el subtotal
                     lista.add(vDTO);
                     
@@ -263,6 +258,7 @@ public class Controlador extends HttpServlet {
                     
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
+                    break;
                 case "GenerarVenta":
                     //Actualizacion del stock
                     for (int i = 0; i < lista.size(); i++) {
@@ -276,35 +272,33 @@ public class Controlador extends HttpServlet {
                         pDao.update(pDto);
                     }
                     
-                    //Guardar venta
-                    //vDTO.setIDCliente(cDto.getIdentificacion());
+                    
                     vDTO.setIDCliente(cDto.getUUID());
-                    vDTO.setIDEmpleado(eDto.getUUID());
-                    //vDTO.setIDEmpleado(eDto.getUsuario());
-                    //vDTO.setIDEmpleado(1); PENDIENTE
+                    vDTO.setIDEmpleado("74745017-f90f-11ed-9162-d85ed30d9217");
                     vDTO.setNumSerie(numeroSerie);
-                    //vDTO.setFecha("2023-05-21"); PENDIENTE
                     vDTO.setMonto(totalPagar);
                     vDTO.setEstado(1);
                     vDAO.create(vDTO);
                     
+                    String UUIDv = vDAO.obtenerUUID(vDAO.IDVentas());
                     //Guardar detalle venta
-                    int idv = Integer.parseInt(vDAO.IDVentas());
                     for (int i = 0; i < lista.size(); i++) {
                         vDTO = new VentaDTO();
-                        vDTO.setID(idv);
-                        vDTO.setIDProducto(lista.get(i).getIDProducto());
+                        vDTO.setUUID(UUIDv);
+                        vDTO.setUUIDProducto(lista.get(i).getUUIDProducto());
                         vDTO.setCantidad(lista.get(i).getCantidad());
-                        vDTO.setPrecioProducto(lista.get(i).getPrecioProducto());
+                        vDTO.setPrecioProducto(lista.get(i).getSubtotal());
                         vDAO.guardarDetalleVentas(vDTO);
                     }
+                    this.lista.clear();
+                    break;
                 default:
                     numeroSerie = vDAO.GenerarSerie();
                     if(numeroSerie == null){
                         numeroSerie = "00000001";
                         request.setAttribute("nserie", numeroSerie);
                     }else{
-                        int incrementar  = Integer.parseInt("0");
+                        int incrementar  = Integer.parseInt(numeroSerie);
                         GenerarSerie gs = new GenerarSerie();
                         numeroSerie = gs.NumeroSerie(incrementar);
                         request.setAttribute("nserie", numeroSerie);

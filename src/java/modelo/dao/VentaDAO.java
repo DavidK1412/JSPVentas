@@ -24,24 +24,47 @@ public class VentaDAO {
             }
         } catch (Exception err) {
             System.out.println("Operacion no finalizada: " + err.getMessage());
+        } finally{
+            conn.closeConnection();
         }
         return numSerie;
     }
     
-    public String IDVentas(){
-        String idventas = "";
+    public int IDVentas(){
+        int idventas = 0;
         String SQL = "SELECT max(ID) FROM venta";
         try {
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {                
-                idventas = rs.getString(1);
+                idventas = rs.getInt(1);
             }
         } catch (Exception err) {
             System.out.println("Operacion no finalizada: " + err.getMessage());
+        } finally{
+            conn.closeConnection();
         }
         return idventas;
+    }
+    
+    public String obtenerUUID(int id){
+        String UUID = "";
+        String SQL = "SELECT UUID FROM venta WHERE ID=?";
+        try {
+            conn = Connector.getInstance();
+            ps = conn.getConn().prepareStatement(SQL);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                UUID = rs.getString(1);
+            }
+        } catch (Exception err) {
+            System.out.println("Operacion no finalizada: " + err.getMessage());
+        } finally{
+            conn.closeConnection();
+        }
+        return UUID;
     }
     
     public boolean create(VentaDTO obj) {
@@ -69,8 +92,8 @@ public class VentaDAO {
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
-            ps.setInt(1, obj.getID());
-            ps.setInt(2, obj.getIDProducto());
+            ps.setString(1, obj.getUUID());
+            ps.setString(2, obj.getUUIDProducto());
             ps.setInt(3, obj.getCantidad());
             ps.setDouble(4, obj.getPrecioProducto());
             ps.executeUpdate();
