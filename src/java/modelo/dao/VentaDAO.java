@@ -45,16 +45,15 @@ public class VentaDAO {
     }
     
     public boolean create(VentaDTO obj) {
-        String SQL = "INSERT INTO venta(Cliente, Empleado, NumeroSerie, Fecha, Total, Estado) VALUES(?,?,?,?,?,?)";
+        String SQL = "INSERT INTO venta(Cliente, Empleado, NumeroSerie, Total, Estado) VALUES(?,?,?,?,?)";
         try{
             conn = Connector.getInstance();
             ps = conn.getConn().prepareStatement(SQL);
             ps.setString(1, obj.getIDCliente());
             ps.setString(2, obj.getIDEmpleado());
             ps.setString(3, obj.getNumSerie());
-            ps.setDate(4, (Date) obj.getFecha());
-            ps.setDouble(5, obj.getMonto());
-            ps.setInt(6, obj.getEstado());
+            ps.setDouble(4, obj.getMonto());
+            ps.setInt(5, obj.getEstado());
             ps.executeUpdate();
             return true;
         }catch(Exception err){

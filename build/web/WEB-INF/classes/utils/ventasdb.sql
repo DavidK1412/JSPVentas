@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2023 a las 04:50:16
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 7.4.30
+-- Tiempo de generación: 23-05-2023 a las 04:07:52
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `cliente` (
   `Apellidos` varchar(50) DEFAULT NULL,
   `Direccion` varchar(50) DEFAULT NULL,
   `Estado` int(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -59,7 +59,7 @@ CREATE TABLE `detalleventa` (
   `Producto` varchar(36) NOT NULL,
   `Cantidad` int(11) DEFAULT NULL,
   `Precio` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE `empleado` (
   `Telefono` varchar(50) DEFAULT NULL,
   `Estado` int(1) DEFAULT 1,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `producto` (
   `Precio` double DEFAULT NULL,
   `Stock` int(11) DEFAULT NULL,
   `Estado` int(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -114,10 +114,10 @@ CREATE TABLE `venta` (
   `Cliente` varchar(36) NOT NULL,
   `Empleado` varchar(36) NOT NULL,
   `NumeroSerie` varchar(244) DEFAULT NULL,
-  `Fecha` date DEFAULT NULL,
+  `Fecha` date DEFAULT current_timestamp(),
   `Total` double DEFAULT NULL,
   `Estado` int(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas

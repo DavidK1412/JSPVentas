@@ -10,7 +10,7 @@ public class VentaDTO {
     private int IDProducto;
     private String numSerie;
     private String nombreProducto;
-    private Date Fecha; //Recordar cambiar a dato de tipo Date o Calendar
+    private Date fechaActual; 
     private double precioProducto;
     private int cantidad;
     private double subtotal;
@@ -20,7 +20,7 @@ public class VentaDTO {
     public VentaDTO() {
     }
 
-    public VentaDTO(int ID, int item, String IDCliente, String IDEmpleado, int IDProducto, String numSerie, String nombreProducto, Date Fecha, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
+    public VentaDTO(int ID, int item, String IDCliente, String IDEmpleado, int IDProducto, String numSerie, String nombreProducto, Date Fecha_def, double precioProducto, int cantidad, double subtotal, double monto, int estado) {
         this.ID = ID;
         this.item = item;
         this.IDCliente = IDCliente;
@@ -28,7 +28,7 @@ public class VentaDTO {
         this.IDProducto = IDProducto;
         this.numSerie = numSerie;
         this.nombreProducto = nombreProducto;
-        this.Fecha = Fecha;
+        this.fechaActual = fechaActual;
         this.precioProducto = precioProducto;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
@@ -92,12 +92,12 @@ public class VentaDTO {
         this.nombreProducto = nombreProducto;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public Date getFechaActual() {
+        return fechaActual;
     }
 
-    public void setFecha(Date Fecha) {
-        this.Fecha = Fecha;
+    public void setFechaActual(Date fechaActual) {
+        this.fechaActual = fechaActual;
     }
 
     public double getPrecioProducto() {
